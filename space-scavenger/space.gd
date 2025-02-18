@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 				radius = sqrt(radius.x*radius.x + radius.y*radius.y)
 				var magnitude = (body1.mass*body2.mass)/(radius*radius)
 				var angle = body1.get_angle_to(body2.global_position)
-				var vertical = magnitude * sin(angle) * -1
-				var horizontal = magnitude * cos(angle) * -1
+				var vertical = magnitude * sin(angle)
+				var horizontal = magnitude * cos(angle)
 				var force = Vector2(horizontal, vertical) * G
 				if body2.name == "Ship":
 					force *= 5
