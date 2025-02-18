@@ -20,7 +20,7 @@ size = Vector2(18, 26)
 [node name="Alien" type="CharacterBody2D"]
 script = ExtResource("1_xk0y3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Skin" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6eh4f")
 
@@ -28,3 +28,4 @@ sprite_frames = SubResource("SpriteFrames_6eh4f")
 shape = SubResource("RectangleShape2D_oi452")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+rotation_smoothing_enabled = true

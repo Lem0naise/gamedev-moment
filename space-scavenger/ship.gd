@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 const mass = 300
-var grav_force = 0
+var grav_force = Vector2(0, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
