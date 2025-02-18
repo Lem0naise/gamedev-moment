@@ -13,5 +13,5 @@ script = ExtResource("1_c6072")
 position = Vector2(710, 136)
 
 [node name="Ship" parent="MassObjects" instance=ExtResource("2_y4x3m")]
-position = Vector2(507, 215)
-scale = Vector2(4, 1)
+position = Vector2(709, 211)
+scale = Vector2(0.5, 1)
