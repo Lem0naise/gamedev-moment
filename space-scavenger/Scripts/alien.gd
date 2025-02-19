@@ -21,12 +21,21 @@ func _physics_process(delta: float) -> void:
 	
 	_align_camera()
 	
-	# Rotate towards 'downwards' gravity
-	$Skin.rotation = get_down(grav_force)
-	
 	# Add the gravity.
 	if not (is_on_something()):
 		velocity += grav_force * delta
+		# Rotate towards 'downwards' gravity
+		$Skin.rotation = get_down(grav_force)
+	else:
+		var normal = get_slide_collision(0).get_normal()
+		if normal.x < 0:
+			$Skin.rotation_degrees = -90
+		elif normal.x > 0:
+			$Skin.rotation_degrees = 90
+		elif normal.y < 0:
+			$Skin.rotation_degrees = 0
+		else:
+			$Skin.rotation_degrees = 180
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
