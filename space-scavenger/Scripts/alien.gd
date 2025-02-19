@@ -29,14 +29,7 @@ func _physics_process(delta: float) -> void:
 		$Skin.rotation = get_down(grav_force)
 	elif collision:
 		var normal = collision.get_normal()
-		if normal.x < 0:
-			$Skin.rotation_degrees = -90
-		elif normal.x > 0:
-			$Skin.rotation_degrees = 90
-		elif normal.y < 0:
-			$Skin.rotation_degrees = 0
-		else:
-			$Skin.rotation_degrees = 180
+		$Skin.rotation = normal.angle() + 0.5 * PI
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -85,5 +78,3 @@ func _is_ship_visible() -> bool:
 		return true
 	else:
 		return false
-
-	
