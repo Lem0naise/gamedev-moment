@@ -22,12 +22,13 @@ func _physics_process(delta: float) -> void:
 	_align_camera()
 	
 	# Add the gravity.
+	var collision = get_slide_collision(0)
 	if not (is_on_something()):
 		velocity += grav_force * delta
 		# Rotate towards 'downwards' gravity
 		$Skin.rotation = get_down(grav_force)
-	else:
-		var normal = get_slide_collision(0).get_normal()
+	elif collision:
+		var normal = collision.get_normal()
 		if normal.x < 0:
 			$Skin.rotation_degrees = -90
 		elif normal.x > 0:
@@ -36,14 +37,17 @@ func _physics_process(delta: float) -> void:
 			$Skin.rotation_degrees = 0
 		else:
 			$Skin.rotation_degrees = 180
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_h := Input.get_axis("left", "right")
 	var direction_v := Input.get_axis("up", "down")
 	if direction_h and is_on_something():
+		velocity = Vector2(0, 0)
 		velocity.x = direction_h * SPEED
-		velocity = velocity.rotated(get_down(grav_force))
+		velocity = velocity.rotated($Skin.rotation)
+		# There is a problem where the player shakes when
+		# moving on the bottom side of the ship
 	if direction_v<0 and is_on_something():
 		velocity.y = direction_v * JUMP_SPEED
 		velocity = velocity.rotated(get_down(grav_force))
