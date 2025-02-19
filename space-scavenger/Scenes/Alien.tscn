@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddosfpi6svvte"]
+
+[ext_resource type="Texture2D" uid="uid://blwanjtdd3nf5" path="res://Assets/Space man-6.png" id="1_obysu"]
+[ext_resource type="Script" path="res://Scripts/alien.gd" id="1_xk0y3"]
+[ext_resource type="Texture2D" uid="uid://cudn2lwvnsa4f" path="res://Assets/Arrow.png" id="3_llha1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6eh4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_obysu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi452"]
+size = Vector2(18, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ss5y"]
+size = Vector2(962, 542)
+
+[node name="Alien" type="CharacterBody2D"]
+script = ExtResource("1_xk0y3")
+
+[node name="Skin" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6eh4f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_oi452")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 2.0
+
+[node name="VisibleArea" type="Area2D" parent="Camera2D"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/VisibleArea"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_8ss5y")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -68)
+scale = Vector2(4.23077, 4.15385)
+texture = ExtResource("3_llha1")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://co18radbo7t0f"]
+
+[ext_resource type="Script" path="res://Scripts/space.gd" id="1_feh3y"]
+[ext_resource type="PackedScene" uid="uid://ddosfpi6svvte" path="res://Scenes/Alien.tscn" id="2_clelr"]
+[ext_resource type="PackedScene" uid="uid://cjfart75qh1qo" path="res://Scenes/Ship.tscn" id="3_a117l"]
+
+[node name="Space" type="Node2D"]
+script = ExtResource("1_feh3y")
+
+[node name="MassObjects" type="Node2D" parent="."]
+
+[node name="Alien" parent="MassObjects" instance=ExtResource("2_clelr")]
+position = Vector2(710, 136)
+
+[node name="Ship" parent="MassObjects" instance=ExtResource("3_a117l")]
+position = Vector2(709, 211)
+scale = Vector2(0.5, 1)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="MassObjects/Ship"]
+position = Vector2(-1418, -211)
+scale = Vector2(2, 1)
+
+[connection signal="screen_entered" from="MassObjects/Ship/VisibleOnScreenNotifier2D" to="MassObjects/Alien" method="_on_ship_enter"]
+[connection signal="screen_exited" from="MassObjects/Ship/VisibleOnScreenNotifier2D" to="MassObjects/Alien" method="_on_ship_exited"]

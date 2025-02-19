@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cde07apwyg10n"
-path="res://.godot/imported/Alien.png-346fc44cb1baf22987fb108f88b8f7c1.ctex"
+uid="uid://blwanjtdd3nf5"
+path="res://.godot/imported/Space man-6.png-c17484cd815df1630bb1b55a220cf447.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alien.png"
-dest_files=["res://.godot/imported/Alien.png-346fc44cb1baf22987fb108f88b8f7c1.ctex"]
+source_file="res://Assets/Space man-6.png"
+dest_files=["res://.godot/imported/Space man-6.png-c17484cd815df1630bb1b55a220cf447.ctex"]
 
 [params]
 

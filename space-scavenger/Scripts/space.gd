@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 				# TEMPORARY - ADD MULTIPLIER FOR SHIP
 				if body2.name == "Ship":
 					force *= 5 # used to be 5
-					
+				
 				# add gravity force of every object to every other object
 				cum_grav_force += force
 				
