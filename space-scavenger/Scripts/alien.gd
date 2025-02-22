@@ -1,5 +1,12 @@
 extends CharacterBody2D
-#hello
+
+#Ok we're gonna need to make a tether so heres my idea.
+#I was researching ropes in godot and they're awful but
+#we could just create a loose ropey effect via animations
+#when really the tether is a straight line. The sprite can
+#be one short thing that tiles a long thin rectangle maybe
+
+#oh might also mean arrow isnt necessary
 
 const SPEED = 300.0
 const ROTATION_SPEED = 5
@@ -44,9 +51,14 @@ func _physics_process(delta: float) -> void:
 	if direction_v<0 and is_on_something():
 		velocity.y = direction_v * JUMP_SPEED
 		velocity = velocity.rotated(get_down(grav_force))
+		#velocity = velocity.rotated($Skin.rotation)
 	if !direction_h && !direction_v && is_on_something():
 		velocity.x = move_toward(velocity.x, 0.001, SPEED)
 		velocity.y = move_toward(velocity.y, 0.001, SPEED)
+	
+	if Input.is_action_just_pressed("down"):
+		var vector = Vector2($'../Ship'.global_position - global_position)
+		velocity = vector
 	
 	move_and_slide()
 	

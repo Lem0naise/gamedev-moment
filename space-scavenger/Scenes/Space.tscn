@@ -1,16 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://co18radbo7t0f"]
+[gd_scene load_steps=5 format=3 uid="uid://co18radbo7t0f"]
 
 [ext_resource type="Script" path="res://Scripts/space.gd" id="1_feh3y"]
 [ext_resource type="PackedScene" uid="uid://ddosfpi6svvte" path="res://Scenes/Alien.tscn" id="2_clelr"]
 [ext_resource type="PackedScene" uid="uid://cjfart75qh1qo" path="res://Scenes/Ship.tscn" id="3_a117l"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fiqan"]
+
 [node name="Space" type="Node2D"]
 script = ExtResource("1_feh3y")
+
+[node name="Tether" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 3.0
+texture = SubResource("PlaceholderTexture2D_fiqan")
 
 [node name="MassObjects" type="Node2D" parent="."]
 
 [node name="Alien" parent="MassObjects" instance=ExtResource("2_clelr")]
 position = Vector2(710, 136)
+
+[node name="StaticBody2D" parent="MassObjects" instance=ExtResource("3_a117l")]
+position = Vector2(474, 34)
+scale = Vector2(0.3, 0.5)
+mass = 100
 
 [node name="Ship" parent="MassObjects" instance=ExtResource("3_a117l")]
 position = Vector2(709, 211)

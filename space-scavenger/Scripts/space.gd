@@ -11,6 +11,12 @@ func get_distance_between_objects(body1, body2):
 	return radius
 
 func _physics_process(delta: float) -> void:
+	calculate_gravity()
+	
+	$Tether.set_point_position(0, $MassObjects/Ship.position)
+	$Tether.set_point_position(1, $MassObjects/Alien.position)
+
+func calculate_gravity():
 	for body1 in $MassObjects.get_children():
 		var cum_grav_force = Vector2.ZERO # initialise cumulative gravity 
 		for body2 in $MassObjects.get_children():
