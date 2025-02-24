@@ -14,6 +14,7 @@ const JUMP_SPEED = 400.0
 const JUMP_VELOCITY = -200.0 #Not used rn
 const mass = 80
 var grav_force = Vector2(0, 0)
+var test = 0
 
 func _ready():
 	$Camera2D.ignore_rotation = false  # turn off Camera2D 'ignore rotation'
@@ -57,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		#velocity = velocity.rotated(get_down(grav_force))
 		velocity = velocity.rotated($Skin.rotation)
 		velocity += h_velocity
-	if !direction_h && !direction_v && is_on_something():
+	if !direction_h && direction_v >= 0 && is_on_something():
 		velocity.x = move_toward(velocity.x, 0.001, SPEED)
 		velocity.y = move_toward(velocity.y, 0.001, SPEED)
 	
