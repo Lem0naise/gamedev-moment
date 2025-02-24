@@ -42,16 +42,20 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_h := Input.get_axis("left", "right")
 	var direction_v := Input.get_axis("up", "down")
+	var h_velocity = Vector2(0, 0)
 	if direction_h and is_on_something():
 		velocity = Vector2(0, 0)
 		velocity.x = direction_h * SPEED
 		velocity = velocity.rotated($Skin.rotation)
+		h_velocity = velocity
 		# There is a problem where the player shakes when
 		# moving on the bottom side of the ship
 	if direction_v<0 and is_on_something():
+		velocity = Vector2(0, 0)
 		velocity.y = direction_v * JUMP_SPEED
-		velocity = velocity.rotated(get_down(grav_force))
-		#velocity = velocity.rotated($Skin.rotation)
+		#velocity = velocity.rotated(get_down(grav_force))
+		velocity = velocity.rotated($Skin.rotation)
+		velocity += h_velocity/2
 	if !direction_h && !direction_v && is_on_something():
 		velocity.x = move_toward(velocity.x, 0.001, SPEED)
 		velocity.y = move_toward(velocity.y, 0.001, SPEED)
