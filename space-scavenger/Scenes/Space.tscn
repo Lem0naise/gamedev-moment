@@ -20,10 +20,10 @@ texture = SubResource("PlaceholderTexture2D_fiqan")
 position = Vector2(710, 136)
 
 [node name="StaticBody2D" parent="MassObjects" instance=ExtResource("3_a117l")]
-position = Vector2(456, -7.00001)
+position = Vector2(544, 82)
 rotation = 0.785398
 scale = Vector2(0.3, 0.5)
-mass = 100
+mass = 200
 
 [node name="Ship" parent="MassObjects" instance=ExtResource("3_a117l")]
 position = Vector2(709, 211)

@@ -52,10 +52,11 @@ func _physics_process(delta: float) -> void:
 		# moving on the bottom side of the ship
 	if direction_v<0 and is_on_something():
 		velocity = Vector2(0, 0)
-		velocity.y = direction_v * JUMP_SPEED
+		var mag = sqrt(h_velocity.x**2 + h_velocity.y**2)
+		velocity.y = -1* sqrt(abs(JUMP_SPEED**2 - mag**2))
 		#velocity = velocity.rotated(get_down(grav_force))
 		velocity = velocity.rotated($Skin.rotation)
-		velocity += h_velocity/2
+		velocity += h_velocity
 	if !direction_h && !direction_v && is_on_something():
 		velocity.x = move_toward(velocity.x, 0.001, SPEED)
 		velocity.y = move_toward(velocity.y, 0.001, SPEED)
