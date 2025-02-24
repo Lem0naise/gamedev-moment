@@ -58,7 +58,12 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("down"):
 		var vector = Vector2($'../Ship'.global_position - global_position)
-		velocity = vector * 1.3
+		var larger = vector.y
+		if abs(vector.x) > abs(vector.y):
+			larger = vector.x
+		vector = vector / Vector2(abs(larger), abs(larger))
+		vector *= Vector2(500, 500)
+		velocity = vector
 	
 	move_and_slide()
 	
