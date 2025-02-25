@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://co18radbo7t0f"]
+[gd_scene load_steps=6 format=3 uid="uid://co18radbo7t0f"]
 
 [ext_resource type="Script" path="res://Scripts/space.gd" id="1_feh3y"]
 [ext_resource type="PackedScene" uid="uid://ddosfpi6svvte" path="res://Scenes/Alien.tscn" id="2_clelr"]
 [ext_resource type="PackedScene" uid="uid://cjfart75qh1qo" path="res://Scenes/Ship.tscn" id="3_a117l"]
+[ext_resource type="Script" path="res://Scripts/tile_to_body.gd" id="4_qbr61"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fiqan"]
 
 [node name="Space" type="Node2D"]
 script = ExtResource("1_feh3y")
+metadata/_edit_vertical_guides_ = [685.0]
+metadata/_edit_horizontal_guides_ = [187.0]
 
 [node name="Tether" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, 0)
@@ -20,18 +23,20 @@ texture = SubResource("PlaceholderTexture2D_fiqan")
 position = Vector2(710, 136)
 
 [node name="StaticBody2D" parent="MassObjects" instance=ExtResource("3_a117l")]
-position = Vector2(544, 82)
+position = Vector2(514, 37)
 rotation = 0.785398
-scale = Vector2(0.3, 0.5)
-mass = 200
+mass = 25
 
 [node name="Ship" parent="MassObjects" instance=ExtResource("3_a117l")]
 position = Vector2(709, 211)
-scale = Vector2(0.5, 1)
+scale = Vector2(3, 3)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="MassObjects/Ship"]
 position = Vector2(-1418, -211)
 scale = Vector2(2, 1)
+
+[node name="TileToBody" type="Node2D" parent="."]
+script = ExtResource("4_qbr61")
 
 [connection signal="screen_entered" from="MassObjects/Ship/VisibleOnScreenNotifier2D" to="MassObjects/Alien" method="_on_ship_enter"]
 [connection signal="screen_exited" from="MassObjects/Ship/VisibleOnScreenNotifier2D" to="MassObjects/Alien" method="_on_ship_exited"]

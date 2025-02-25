@@ -1,18 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjfart75qh1qo"]
+[gd_scene load_steps=5 format=3 uid="uid://cjfart75qh1qo"]
 
 [ext_resource type="Script" path="res://Scripts/ship.gd" id="1_d6t5y"]
+[ext_resource type="Texture2D" uid="uid://by2t5jvr3i4kc" path="res://Assets/Tiles-3.png" id="1_fsw7t"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_fjdw7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gc452"]
+texture = ExtResource("1_fsw7t")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvawu"]
-size = Vector2(207, 106)
+[sub_resource type="TileSet" id="TileSet_7pajg"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_gc452")
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="Ship" type="TileMap"]
+texture_filter = 1
+tile_set = SubResource("TileSet_7pajg")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 131072, 0, 65535, 0, 2, 0, 131072, 2)
 script = ExtResource("1_d6t5y")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(207, 106)
-texture = SubResource("CanvasTexture_fjdw7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_gvawu")

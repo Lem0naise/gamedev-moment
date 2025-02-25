@@ -1,8 +1,6 @@
-extends TileMap
+extends Node2D
 
-@export var mass = 300
-var grav_force = Vector2(0, 0)
-
+var mass
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

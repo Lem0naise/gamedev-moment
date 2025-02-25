@@ -58,8 +58,8 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.rotated($Skin.rotation)
 		velocity += h_velocity
 	if !direction_h && direction_v >= 0 && is_on_something():
-		velocity.x = move_toward(velocity.x, 0.001, SPEED)
-		velocity.y = move_toward(velocity.y, 0.001, SPEED)
+		velocity.x = move_toward(velocity.x, 0.005, SPEED)
+		velocity.y = move_toward(velocity.y, 0.005, SPEED)
 	
 	if Input.is_action_just_pressed("down"):
 		var vector = Vector2($'../Ship'.global_position - global_position)
@@ -76,6 +76,7 @@ func _physics_process(delta: float) -> void:
 	_check_ship_visibility()
 	
 func is_on_something():
+	#Check has mass?
 	return (is_on_floor() || is_on_ceiling() || is_on_wall())
 		
 func _check_ship_visibility() -> void:
